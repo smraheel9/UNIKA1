@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="UNIKA — quality food products, trusted manufacturing and global partnerships.">
+<title>UNIKA | Quality Made for Sharing</title>
+<style>
+:root{--black:#000;--white:#fff;--red:#b5122b;--light:#f5f5f5;--line:#dedede;--muted:#666}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--black);background:var(--white);line-height:1.5}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+img,video{display:block;max-width:100%}
+.container{width:min(1200px,calc(100% - 40px));margin-inline:auto}
+.site-header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--line)}
+.header-inner{min-height:76px;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:clamp(12px,2vw,24px)}
+.logo{justify-self:start;font-size:22px;font-weight:800;letter-spacing:2px;white-space:nowrap}
+.logo span{color:var(--red)}
+.main-nav{display:flex;min-width:0;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,22px);font-size:30px;overflow-x:auto;scrollbar-width:none}
+.main-nav::-webkit-scrollbar{display:none}
+.main-nav a{font-size:20px;font-weight:700;white-space:nowrap}
+.main-nav a:hover,.main-nav a:focus-visible{color:var(--red)}
+.header-contact{display:none!important}
+.header-contact:hover{background:var(--black);color:var(--white)}
+.hero{position:relative;isolation:isolate;min-height:0;padding:clamp(56px,8vw,96px) 0;display:grid;place-items:center;overflow:hidden;background:var(--black);color:var(--white);text-align:center}
+.hero-video,.hero-overlay{position:absolute;inset:0;width:100%;height:100%}
+.hero-video{z-index:-2;object-fit:cover;filter:grayscale(1)}
+.hero-overlay{z-index:-1;background:rgba(0,0,0,.56)}
+.hero-content{width:min(850px,calc(100% - 36px))}
+.eyebrow{display:inline-block;color:var(--red);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px}
+.hero .eyebrow{color:var(--white)}
+.hero h1{font-size:clamp(40px,7vw,82px);line-height:1.04;letter-spacing:-2px;margin:18px 0}
+.hero h1 span{color:var(--red)}
+.hero-copy{max-width:620px;margin:0 auto 28px;color:#f0f0f0;font-size:16px}
+.button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 20px;border:1px solid var(--white);border-radius:9px;font-size:13px;font-weight:700;transition:background-color .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.btn-red,.btn-outline-light,.btn-outline-dark,.add-to-cart,.newsletter-form button,.newsletter-popup-form button,.whatsapp-toggle,.whatsapp-start{border-radius:9px;transition:background-color .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.btn:focus-visible,.newsletter-form button:focus-visible,.newsletter-popup-form button:focus-visible,.whatsapp-toggle:focus-visible,.whatsapp-start:focus-visible,.brand-card:focus-visible,.footer-col a:focus-visible,.footer-brand .btn:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media(hover:hover){
+ .btn:hover,.newsletter-form button:hover,.newsletter-popup-form button:hover,.whatsapp-toggle:hover,.whatsapp-start:hover{box-shadow:0 5px 14px rgba(0,0,0,.12);transform:translateY(-2px)}
+}
+.btn-red{background:var(--red);border-color:var(--red);color:var(--white)}
+.btn-red:hover{background:#8f0d21;border-color:#8f0d21}
+.btn-outline-light{background:transparent;color:var(--white)}
+.btn-outline-light:hover{background:var(--white);color:var(--black)}
+.btn-outline-dark{border-color:var(--black);background:var(--white);color:var(--black)}
+.btn-outline-dark:hover{background:var(--black);color:var(--white)}
+.content-section{height:auto;min-height:0;padding:clamp(40px,5vw,64px) 0;display:block}
+.content-section>.container{width:min(1200px,calc(100% - 40px))}
+.section-inner{width:100%;height:auto;min-height:0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
+.section-head h2{font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-1px;margin:8px 0 0}
+.section-head p{max-width:430px;color:var(--muted);font-size:14px;margin:0}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.intro-visual{position:relative;min-height:0;aspect-ratio:4/3;background:var(--light);overflow:hidden}
+.intro-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.intro-copy h2{font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:-1px;margin:12px 0 18px}
+.intro-copy p{font-size:15px;color:var(--muted);margin:0 0 18px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:35px;padding-top:22px;gap:16px}
+.stat strong{display:block;font-size:27px;color:var(--red);line-height:1.2}
+.stat span{font-size:12px;color:var(--muted)}
+.brands-section{height:auto;min-height:0;padding:clamp(40px,5vw,64px) 0;display:block;background:var(--light);border-top:3px solid var(--red)}
+.brands-section .container{width:min(1200px,calc(100% - 40px))}
+.brand-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
+.brand-heading h2{font-size:clamp(30px,4vw,44px);margin:7px 0 0;line-height:1.1}
+.brand-heading p{font-size:13px;color:var(--muted);margin:0}
+.brand-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.brand-card{height:116px;min-width:0;display:flex;align-items:center;justify-content:center;padding:14px;background:var(--white);border:1px solid var(--line);border-radius:11px;transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.brand-card:hover,.brand-card:focus-visible{border-color:var(--red);box-shadow:0 7px 20px rgba(0,0,0,.08);transform:translateY(-3px)}
+.brand-card img{width:100%;height:76px;object-fit:contain;filter:grayscale(1)}
+.brand-fallback{font-size:15px;font-weight:700;text-align:center}
+.products-section{background:var(--white)}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.product-card{min-width:0;border:1px solid var(--line);background:var(--white)}
+.product-image{position:relative;overflow:hidden;aspect-ratio:4/4.4;background:var(--light)}
+.product-image img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:transform .35s}
+.product-card:hover .product-image img{transform:scale(1.04)}
+.product-info{padding:15px}
+.product-category{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.product-info h3{font-size:15px;margin:5px 0 9px}
+.price-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.price{font-size:15px;font-weight:700}
+.compare-price{font-size:12px;color:var(--muted);text-decoration:line-through}
+.product-actions{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .2s,opacity .2s}
+.product-actions-inner{overflow:hidden}
+.product-actions .btn{width:100%;margin-top:13px;min-height:40px;padding:9px 12px}
+.product-card:hover .product-actions,.product-card:focus-within .product-actions{grid-template-rows:1fr;opacity:1}
+.product-card:focus-within .product-actions-inner{overflow:visible}
+.product-note{font-size:11px;color:var(--muted);margin:10px 0 0}
+.category-products-section{height:auto;min-height:0;padding:clamp(40px,5vw,64px) 0;background:var(--light)}
+.category-products-section .section-head{margin-bottom:34px}
+.editorial-products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.editorial-product{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"visual" "copy";align-content:start;min-width:0;background:var(--white);border:1px solid var(--line)}
+.editorial-product-visual{grid-area:visual;position:relative;min-width:0;overflow:hidden;aspect-ratio:1/1;background:#e9e9e9}
+.editorial-product-visual img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:transform .35s}
+.editorial-product:hover .editorial-product-visual img{transform:scale(1.035)}
+.editorial-discount{position:absolute;top:14px;left:14px;z-index:1;padding:7px 10px;background:var(--red);color:var(--white);font-size:12px;font-weight:700}
+.editorial-cart{position:absolute;left:16px;right:16px;bottom:16px;z-index:1;display:flex;justify-content:center;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.editorial-cart .btn{min-width:170px;min-height:44px;background:var(--red);border-color:var(--red);color:var(--white)}
+.editorial-product:hover .editorial-cart,.editorial-product:focus-within .editorial-cart{opacity:1;transform:translateY(0)}
+.editorial-product-copy{grid-area:copy;align-self:start;padding:18px}
+.editorial-product-copy h3{margin:7px 0 9px;font-size:18px;line-height:1.2}
+.editorial-product-copy p{min-height:3em;margin:0 0 14px;color:var(--muted);font-size:13px}
+.editorial-price .price{font-size:17px}
+.editorial-price .compare-price{font-size:13px}
+@media(hover:none){.editorial-cart{opacity:1;transform:none}}
+@media(max-width:1000px){.editorial-products{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){
+ .editorial-products{grid-template-columns:minmax(0,1fr);gap:14px}
+ .editorial-product-visual{aspect-ratio:16/10}
+ .editorial-product-copy p{min-height:0}
+}
+.export-section{background:var(--black);color:var(--white)}
+.export-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.export-copy h2{font-size:clamp(34px,4.5vw,54px);line-height:1.08;margin:12px 0 18px}
+.export-copy p{max-width:500px;color:#d7d7d7;font-size:15px}
+.export-tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+.export-tags span{border:1px solid #666;padding:8px 11px;font-size:12px}
+.export-visual{min-height:0;aspect-ratio:4/3;position:relative;overflow:hidden;background:#222}
+.export-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.78}
+.export-visual span{position:absolute;left:18px;right:18px;bottom:18px;background:var(--black);padding:12px;color:var(--white);font-size:13px}
+.sustainability-grid{height:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.simple-card{min-height:0;border:1px solid var(--line);border-radius:11px;padding:22px;transition:box-shadow .25s ease,transform .25s ease,border-color .25s ease}
+.media-card:hover,.media-card:focus-within,.simple-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.09);transform:translateY(-3px);border-color:#c9c9c9}
+.simple-card h3{font-size:18px;margin:0 0 10px}
+.simple-card p{font-size:13px;color:var(--muted);margin:0}
+.media-grid{height:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.media-card{border:1px solid var(--line);border-radius:11px;min-width:0;overflow:hidden;transition:box-shadow .25s ease,transform .25s ease,border-color .25s ease}
+.media-image{aspect-ratio:16/10;overflow:hidden;background:var(--light)}
+.media-image img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:transform .3s}
+.media-card:hover .media-image img{transform:scale(1.03)}
+.media-body{padding:17px}
+.media-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red)}
+.media-body h3{font-size:17px;line-height:1.3;margin:8px 0}
+.media-body p{font-size:12px;color:var(--muted);margin:0}
+.events-section{background:var(--light)}
+.event-list{border-top:1px solid #ccc}
+.event-row{display:grid;grid-template-columns:100px 1fr auto;align-items:center;gap:22px;padding:22px 14px;border-bottom:1px solid #ccc;border-radius:10px;transition:background-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.event-row:hover,.event-row:focus-within{background:var(--white);box-shadow:0 6px 18px rgba(0,0,0,.07);transform:translateY(-2px)}
+.event-date{font-size:13px;font-weight:700;color:var(--red)}
+.event-row h3{font-size:17px;margin:0 0 4px}
+.event-row p{font-size:12px;color:var(--muted);margin:0}
+.cta-section{height:auto;min-height:0;padding:clamp(40px,5vw,64px) 0;display:block;text-align:center;background:var(--red);color:var(--white)}
+.cta-section h2{font-size:clamp(34px,5vw,58px);line-height:1.08;margin:10px auto 16px;max-width:800px}
+.cta-section p{max-width:620px;margin:0 auto 25px;color:#fff}
+.cta-section .eyebrow{color:var(--white)}
+.site-footer{background:var(--black);color:var(--white);padding:55px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;padding-bottom:35px}
+.footer-brand p{max-width:280px;color:#ccc;font-size:13px}
+.footer-col h3{font-size:13px;margin:5px 0 15px}
+.footer-col a{display:block;color:#ccc;font-size:12px;margin:9px 0;transition:color .2s ease}
+.footer-col a::after,.footer-brand .btn::after{content:"→";display:inline-block;margin-left:5px;opacity:0;transform:translateX(-4px);transition:opacity .2s ease,transform .2s ease}
+.footer-col a:hover,.footer-col a:focus-visible{color:var(--red)}
+.footer-col a:hover::after,.footer-col a:focus-visible::after,.footer-brand .btn:hover::after,.footer-brand .btn:focus-visible::after{opacity:1;transform:translateX(2px)}
+.footer-bottom{border-top:1px solid #444;padding-top:18px;display:flex;justify-content:space-between;gap:15px;color:#ccc;font-size:11px}
+.whatsapp-widget{position:fixed;right:22px;bottom:22px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.whatsapp-prompt{display:none;width:230px;padding:16px;background:var(--white);color:var(--black);border:1px solid var(--line);box-shadow:0 5px 22px #0002}
+.whatsapp-prompt.is-open{display:block;animation:rise .18s ease-out}
+.whatsapp-prompt strong{display:block;font-size:14px;margin-bottom:5px}
+.whatsapp-prompt p{font-size:12px;color:var(--muted);margin:0 0 12px}
+.whatsapp-start{display:block;text-align:center;background:var(--red);color:var(--white);padding:10px;font-size:12px;font-weight:700}
+.whatsapp-toggle{width:54px;height:54px;border:0;background:var(--red);color:var(--white);font-weight:700;cursor:pointer}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.footer-newsletter{padding:0 0 28px;text-align:center}
+.footer-newsletter h2{font-size:clamp(22px,3vw,30px);line-height:1.2;color:var(--white);margin:0 0 14px}
+.newsletter-form{width:min(540px,100%);margin:0 auto;display:flex;justify-content:center;gap:8px}
+.newsletter-form input{flex:1;min-width:0;min-height:44px;border:1px solid var(--black);padding:10px 12px}
+.newsletter-form button{flex:0 0 auto;min-height:44px;border:1px solid var(--red);background:var(--red);color:var(--white);padding:10px 18px;font-weight:700;cursor:pointer}
+.newsletter-popup{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.62)}
+.newsletter-popup[hidden]{display:none}
+.newsletter-dialog{position:relative;width:min(440px,100%);padding:36px 28px 28px;background:var(--white);color:var(--black);box-shadow:0 16px 50px rgba(0,0,0,.28)}
+.newsletter-close{position:absolute;top:10px;right:12px;width:40px;height:40px;padding:0;border:0;background:transparent;color:var(--black);font-size:30px;line-height:1;cursor:pointer}
+.newsletter-close:focus-visible,.newsletter-popup button:focus-visible,.newsletter-popup input:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.newsletter-dialog h2{margin:0 40px 10px 0;font-size:25px;line-height:1.2}
+.newsletter-dialog p{margin:0 0 18px;color:var(--muted);font-size:14px}
+.newsletter-popup-form{display:grid;gap:10px}
+.newsletter-popup-form input{width:100%;min-width:0;min-height:46px;padding:10px 12px;border:1px solid #999;background:var(--white);color:var(--black)}
+.newsletter-popup-form button{min-height:46px;border:1px solid var(--red);background:var(--red);color:var(--white);font-weight:700;cursor:pointer}
+.newsletter-popup-form button:disabled{opacity:.7;cursor:wait}
+.newsletter-popup-status{min-height:1.5em;margin:12px 0 0!important;font-size:13px!important}
+@media(max-width:420px){.newsletter-dialog{padding:34px 20px 22px}.newsletter-dialog h2{font-size:22px}}
+@media(max-width:1000px){
+ .header-inner{grid-template-columns:auto minmax(0,1fr);gap:12px;padding:10px 0}
+ .main-nav{justify-content:flex-start;gap:14px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .brand-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+ .brand-card{height:100px;padding:8px}
+ .sustainability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+ html{scroll-padding-top:112px}
+ .container,.content-section>.container,.brands-section .container{width:calc(100% - 28px)}
+ .header-inner{min-height:0;gap:10px}
+ .logo{font-size:22px}
+ .main-nav{justify-content:flex-start;gap:14px}
+ .hero{min-height:0;padding:56px 0}
+ .hero h1{font-size:clamp(40px,12vw,60px);letter-spacing:-1px}
+ .hero-copy{font-size:14px}
+ .content-section,.brands-section{min-height:0;padding:40px 0}
+ .section-head,.brand-heading{display:block}
+ .section-head p,.brand-heading p{margin-top:12px}
+ .intro-grid,.export-grid{grid-template-columns:1fr;gap:25px}
+ .intro-visual{min-height:0;aspect-ratio:4/3}
+ .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:18px}
+ .stat:nth-child(odd){border-right:1px solid var(--line)}
+ .brand-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .brand-card{height:96px}
+ .brand-card img{height:65px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product-info{padding:11px}
+ .product-info h3{font-size:13px}
+ .price{font-size:14px}
+ .product-actions{grid-template-rows:1fr;opacity:1}
+ .product-actions-inner{overflow:visible}
+ .product-actions .btn{font-size:11px;padding:9px 5px}
+ .product-note{font-size:10px}
+ .export-visual{min-height:0;aspect-ratio:4/3}
+ .sustainability-grid,.media-grid{grid-template-columns:1fr}
+ .simple-card{min-height:0;padding:20px}
+ .event-row{grid-template-columns:65px 1fr;gap:12px;padding:18px 0}
+ .event-row .btn{grid-column:2;justify-self:start}
+ .cta-section{min-height:0;padding:44px 0}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:24px 16px}
+ .footer-brand{grid-column:1/-1}
+ .footer-bottom{flex-direction:column}
+ .newsletter-form{flex-direction:column}
+ .newsletter-form button{width:100%}
+ .whatsapp-widget{right:14px;bottom:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .hero-video{display:none}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+ <div class="container header-inner">
+  <a class="logo" href="#home" aria-label="UNIKA home" style="font-size: 22px !important;">UNI<span>KA</span></a>
+  <nav class="main-nav" aria-label="Main navigation" style="font-size: 30px !important;">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#brands">Our Brands</a><a href="#products">Products</a><a href="#export">Export</a><a href="#media">News &amp; Media</a>
+  </nav>
+  <a class="header-contact" href="#contact" style="display: none;">Contact Us</a>
+ </div>
+</header>
+<main>
+<section class="hero" id="home" aria-label="Welcome to UNIKA">
+ <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80">
+  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+ </video>
+ <div class="hero-overlay"></div>
+ <div class="hero-content">
+  <span class="eyebrow">Quality made for sharing</span>
+  <h1>Good food.<br><span>Good moments.</span><br>Made better.</h1>
+  <p class="hero-copy">Thoughtfully made products, trusted quality and partnerships built for everyday moments.</p>
+  <div class="button-row"><a class="btn btn-red" href="#products">Explore Products</a><a class="btn btn-outline-light" href="#brands">Discover Our Brands</a></div>
+ </div>
+</section>
+
+<section class="content-section" id="about">
+ <div class="container section-inner">
+  <div class="intro-grid">
+   <div class="intro-visual"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1100&q=80" alt="Fresh produce at a market" loading="lazy" decoding="async"></div>
+   <div class="intro-copy"><span class="eyebrow">A little about us</span><h2>Built on trust.<br>Made for everyday life.</h2><p>At UNIKA, we believe the best products start with care. Our focus on dependable quality, thoughtful manufacturing and lasting relationships guides the way we work.</p><a class="btn btn-outline-dark" href="#contact">Meet UNIKA</a></div>
+  </div>
+  <div class="stats-grid">
+   <div class="stat"><strong>20+</strong><span>Years of experience*</span></div><div class="stat"><strong>30+</strong><span>Markets reached*</span></div><div class="stat"><strong>100%</strong><span>Commitment to quality*</span></div><div class="stat"><strong>One</strong><span>Purpose: better moments</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="brands-section" id="brands">
+ <div class="container">
+  <div class="brand-heading"><div><span class="eyebrow">One family, many favourites</span><h2>Our Brands</h2></div><p>Brand showcase prototype — replace sample logos with approved UNIKA assets.</p></div>
+  <div class="brand-grid">
+   <a class="brand-card" href="#products" aria-label="Bake Time brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/image-1.png" alt="Bake Time" loading="lazy"><span class="brand-fallback" hidden>Bake Time</span></a>
+   <a class="brand-card" href="#products" aria-label="Candeez brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/image-3.png" alt="Candeez" loading="lazy"><span class="brand-fallback" hidden>Candeez</span></a>
+   <a class="brand-card" href="#products" aria-label="Cup Kake brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/image-5.png" alt="Cup Kake" loading="lazy"><span class="brand-fallback" hidden>Cup Kake</span></a>
+   <a class="brand-card" href="#products" aria-label="Fresh Up brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/image-2.png" alt="Fresh Up" loading="lazy"><span class="brand-fallback" hidden>Fresh Up</span></a>
+   <a class="brand-card" href="#products" aria-label="Ding Dong brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/Dingdong-product-page-logo-e1748343189594.webp" alt="Ding Dong" loading="lazy"><span class="brand-fallback" hidden>Ding Dong</span></a>
+   <a class="brand-card" href="#products" aria-label="Jiggles brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/image-4.png" alt="Jiggles" loading="lazy"><span class="brand-fallback" hidden>Jiggles</span></a>
+   <a class="brand-card" href="#products" aria-label="Kake brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/image-6.png" alt="Kake" loading="lazy"><span class="brand-fallback" hidden>Kake</span></a>
+   <a class="brand-card" href="#products" aria-label="Panda Kake brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/Brand-logos-04.png" alt="Panda Kake" loading="lazy"><span class="brand-fallback" hidden>Panda Kake</span></a>
+   <a class="brand-card" href="#products" aria-label="Wispy brand"><img src="https://hilalfoods.com.pk/wp-content/uploads/Brand-logos-03.png" alt="Wispy" loading="lazy"><span class="brand-fallback" hidden>Wispy</span></a>
+   <a class="brand-card" href="#products" aria-label="UNIKA Select brand"><span class="brand-fallback">UNIKA SELECT</span></a>
+   <a class="brand-card" href="#products" aria-label="More UNIKA brands"><span class="brand-fallback">MORE BRANDS</span></a>
+   <a class="brand-card" href="#products" aria-label="UNIKA Foods brand"><span class="brand-fallback">UNIKA FOODS</span></a>
+   <a class="brand-card" href="#products" aria-label="Daily Choice brand"><span class="brand-fallback">DAILY CHOICE</span></a>
+   <a class="brand-card" href="#products" aria-label="Simply Good brand"><span class="brand-fallback">SIMPLY GOOD</span></a>
+   <a class="brand-card" href="#products" aria-label="Everyday brand"><span class="brand-fallback">EVERYDAY</span></a>
+  </div>
+ </div>
+</section>
+
+<section class="content-section products-section" id="products">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">Made with care</span><h2>Featured Products</h2></div><p>Clean product cards with pricing and hover-to-reveal cart actions. Prices and products below are sample data.</p></div>
+  <div class="product-grid">
+   <article class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Freshly baked bread" loading="lazy"></div><div class="product-info"><span class="product-category">Bakery</span><h3>Classic Bakery Loaf</h3><div class="price-row"><span class="price">Rs. 450</span><span class="compare-price">Rs. 550</span></div><div class="product-actions"><div class="product-actions-inner"><button class="btn btn-red add-to-cart" type="button" data-product="Classic Bakery Loaf">Add to Cart</button></div></div></div></article>
+   <article class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80" alt="Biscuits and snacks" loading="lazy"></div><div class="product-info"><span class="product-category">Snacks</span><h3>Sharing Biscuits</h3><div class="price-row"><span class="price">Rs. 320</span><span class="compare-price">Rs. 400</span></div><div class="product-actions"><div class="product-actions-inner"><button class="btn btn-red add-to-cart" type="button" data-product="Sharing Biscuits">Add to Cart</button></div></div></div></article>
+   <article class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Chocolate cake" loading="lazy"></div><div class="product-info"><span class="product-category">Sweet treats</span><h3>Chocolate Celebration Cake</h3><div class="price-row"><span class="price">Rs. 1,200</span><span class="compare-price">Rs. 1,450</span></div><div class="product-actions"><div class="product-actions-inner"><button class="btn btn-red add-to-cart" type="button" data-product="Chocolate Celebration Cake">Add to Cart</button></div></div></div></article>
+   <article class="product-card"><div class="product-image"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80" alt="Tea poured into a cup" loading="lazy"></div><div class="product-info"><span class="product-category">Beverages</span><h3>Everyday Tea Blend</h3><div class="price-row"><span class="price">Rs. 680</span><span class="compare-price">Rs. 800</span></div><div class="product-actions"><div class="product-actions-inner"><button class="btn btn-red add-to-cart" type="button" data-product="Everyday Tea Blend">Add to Cart</button></div></div></div></article>
+  </div>
+  <p class="product-note" id="cartMessage" aria-live="polite">Sample prices only. Cart buttons are a front-end demo and are not connected to checkout.</p>
+ </div>
+</section>
+
+<section class="content-section category-products-section" id="category-products" aria-labelledby="category-products-title">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">Shop by category</span><h2 id="category-products-title">Everyday favourites</h2></div><p>Explore our sample range, from bakery and snacks to sweet treats and beverages.</p></div>
+  <div class="editorial-products">
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Freshly baked bread" loading="lazy" decoding="async">
+     <span class="editorial-discount">-18%</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Classic Bakery Loaf" aria-label="Add Classic Bakery Loaf to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Bakery</span><h3>Classic Bakery Loaf</h3><p>A versatile bakery staple for everyday meals and sharing.</p><div class="price-row editorial-price"><span class="price">Rs. 450</span><span class="compare-price">Rs. 550</span></div></div>
+   </article>
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Biscuits and snacks" loading="lazy" decoding="async">
+     <span class="editorial-discount">-20%</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Sharing Biscuits" aria-label="Add Sharing Biscuits to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Snacks</span><h3>Sharing Biscuits</h3><p>A simple snack to enjoy with family and friends.</p><div class="price-row editorial-price"><span class="price">Rs. 320</span><span class="compare-price">Rs. 400</span></div></div>
+   </article>
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Chocolate cake" loading="lazy" decoding="async">
+     <span class="editorial-discount">-17%</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Chocolate Celebration Cake" aria-label="Add Chocolate Celebration Cake to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Sweet Treats</span><h3>Chocolate Celebration Cake</h3><p>A chocolate cake made for sharing at a special moment.</p><div class="price-row editorial-price"><span class="price">Rs. 1,200</span><span class="compare-price">Rs. 1,450</span></div></div>
+   </article>
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Tea poured into a cup" loading="lazy" decoding="async">
+     <span class="editorial-discount">-15%</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Everyday Tea Blend" aria-label="Add Everyday Tea Blend to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Beverages</span><h3>Everyday Tea Blend</h3><p>A familiar tea blend for a quiet pause or shared cup.</p><div class="price-row editorial-price"><span class="price">Rs. 680</span><span class="compare-price">Rs. 800</span></div></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="content-section category-products-section" id="category-products-new" aria-labelledby="category-products-new-title">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">Shop by category</span><h2 id="category-products-new-title">Everyday favourites</h2></div><p>Explore our sample range, from bakery and snacks to sweet treats and beverages.</p></div>
+  <div class="editorial-products">
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Freshly baked bread" loading="lazy" decoding="async">
+     <span class="editorial-discount">NEW</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Classic Bakery Loaf" aria-label="Add Classic Bakery Loaf to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Bakery</span><h3>Classic Bakery Loaf</h3><p>A versatile bakery staple for everyday meals and sharing.</p><div class="price-row editorial-price"><span class="price">Rs. 450</span><span class="compare-price">Rs. 550</span></div></div>
+   </article>
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Biscuits and snacks" loading="lazy" decoding="async">
+     <span class="editorial-discount">NEW</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Sharing Biscuits" aria-label="Add Sharing Biscuits to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Snacks</span><h3>Sharing Biscuits</h3><p>A simple snack to enjoy with family and friends.</p><div class="price-row editorial-price"><span class="price">Rs. 320</span><span class="compare-price">Rs. 400</span></div></div>
+   </article>
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Chocolate cake" loading="lazy" decoding="async">
+     <span class="editorial-discount">-17%</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Chocolate Celebration Cake" aria-label="Add Chocolate Celebration Cake to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Sweet Treats</span><h3>Chocolate Celebration Cake</h3><p>A chocolate cake made for sharing at a special moment.</p><div class="price-row editorial-price"><span class="price">Rs. 1,200</span><span class="compare-price">Rs. 1,450</span></div></div>
+   </article>
+   <article class="editorial-product">
+    <div class="editorial-product-visual">
+     <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Tea poured into a cup" loading="lazy" decoding="async">
+     <span class="editorial-discount">-15%</span>
+     <div class="editorial-cart"><button class="btn add-to-cart" type="button" data-product="Everyday Tea Blend" aria-label="Add Everyday Tea Blend to cart">Add to Cart</button></div>
+    </div>
+    <div class="editorial-product-copy"><span class="product-category">Beverages</span><h3>Everyday Tea Blend</h3><p>A familiar tea blend for a quiet pause or shared cup.</p><div class="price-row editorial-price"><span class="price">Rs. 680</span><span class="compare-price">Rs. 800</span></div></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="content-section export-section" id="export">
+ <div class="container section-inner export-grid">
+  <div class="export-copy"><span class="eyebrow">Growing together</span><h2>Local care.<br>Global ambition.</h2><p>We build reliable partnerships and bring products to more markets. Talk to our team about export opportunities, distribution and private-label manufacturing.</p><div class="export-tags"><span>Export partnerships</span><span>Private label</span><span>Reliable logistics</span></div><a class="btn btn-red" href="#contact">Explore Export</a></div>
+  <div class="export-visual"><img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1200&q=80" alt="Cargo containers at a shipping port" loading="lazy"><span>Export markets and coverage — replace with verified information</span></div>
+ </div>
+</section>
+
+<section class="content-section" id="certifications">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">Quality and responsibility</span><h2>Certifications</h2></div><p>Show verified certificates, standards and downloadable documents here.</p></div>
+  <div class="sustainability-grid">
+   <article class="simple-card"><h3>Quality Standards</h3><p>Add approved quality-management standards and certificate details.</p></article>
+   <article class="simple-card"><h3>Food Safety</h3><p>Add verified food-safety certifications and current validity dates.</p></article>
+   <article class="simple-card"><h3>View Documents</h3><p>Connect each item to its official certificate or downloadable PDF.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="content-section" id="sustainability">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">Doing our part</span><h2>Sustainability &amp; CSR</h2></div><p>Use this space for verified environmental, community and ethical initiatives.</p></div>
+  <div class="sustainability-grid">
+   <article class="simple-card"><h3>Environment</h3><p>Share measurable work on waste, packaging, energy or resource use.</p></article>
+   <article class="simple-card"><h3>Community</h3><p>Highlight confirmed community partnerships and support initiatives.</p></article>
+   <article class="simple-card"><h3>Responsible Practices</h3><p>Explain supplier standards, employee care and ethical commitments.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="content-section" id="media">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">What's happening</span><h2>News, Media &amp; Events</h2></div><p>Company updates, industry gatherings and moments from our partnerships.</p></div>
+  <div class="media-grid">
+   <article class="media-card"><div class="media-image"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80" alt="People meeting at a business event" loading="lazy"></div><div class="media-body"><span class="media-tag">Expos &amp; Recognition</span><h3>Connecting with the industry</h3><p>Sample story — replace with an approved update.</p></div></article>
+   <article class="media-card"><div class="media-image"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Business partners meeting" loading="lazy"></div><div class="media-body"><span class="media-tag">Meetings &amp; Delegations</span><h3>Building lasting relationships</h3><p>Sample story — replace with an approved update.</p></div></article>
+   <article class="media-card"><div class="media-image"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=80" alt="Food being prepared in a kitchen" loading="lazy"></div><div class="media-body"><span class="media-tag">Brand &amp; Video</span><h3>Our brands and the people behind them</h3><p>Sample story — replace with an approved update.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="content-section events-section" id="events">
+ <div class="container section-inner">
+  <div class="section-head"><div><span class="eyebrow">Meet us in person</span><h2>Events Calendar</h2></div><p>Add confirmed exhibition dates, venues and booth details when available.</p></div>
+  <div class="event-list">
+   <article class="event-row"><div class="event-date">COMING SOON</div><div><h3>Upcoming Trade Exhibition</h3><p>Venue and booth details to be announced.</p></div><a class="btn btn-outline-dark" href="#contact">Meet Us</a></article>
+   <article class="event-row"><div class="event-date">COMING SOON</div><div><h3>Industry and Distribution Meetings</h3><p>Contact the team to arrange a meeting.</p></div><a class="btn btn-outline-dark" href="#contact">Meet Us</a></article>
+  </div>
+ </div>
+</section>
+
+<section class="cta-section" id="contact">
+ <div class="container"><span class="eyebrow">Let's work together</span><h2>Build something good with UNIKA.</h2><p>For distribution, private label, manufacturing or general enquiries, get in touch with our team.</p><div class="button-row"><a class="btn btn-outline-light" href="mailto:info@unika.example">Contact UNIKA</a><a class="btn btn-outline-light" href="#footer">Company information</a></div></div>
+</section>
+</main>
+<footer class="site-footer" id="footer">
+ <div class="container">
+  <div class="footer-newsletter">
+   <h2 id="newsletterTitle">Subscribe to our newsletter</h2>
+   <!-- Laravel integration point: POST /newsletter/subscribe; include the Laravel CSRF token when wired to the backend. -->
+   <form class="newsletter-form" action="/newsletter/subscribe" method="post">
+    <label for="newsletterEmail" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Email address</label>
+    <input id="newsletterEmail" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
+    <button type="submit">Subscribe</button>
+   </form>
+  </div>
+  <div class="footer-grid">
+   <div class="footer-brand"><a class="logo" href="#home">UNI<span>KA</span></a><p>Thoughtfully made products, dependable quality and partnerships built on trust.</p><a class="btn btn-outline-light" href="mailto:info@unika.example">Get in touch</a></div>
+   <div class="footer-col"><h3>Explore</h3><a href="#about">About UNIKA</a><a href="#brands">Our Brands</a><a href="#products">Products</a><a href="#export">Export</a></div>
+   <div class="footer-col"><h3>Company</h3><a href="#media">News &amp; Media</a><a href="#events">Events Calendar</a><a href="#contact">Careers</a><a href="#contact">Contact</a></div>
+   <div class="footer-col"><h3>Work with us</h3><a href="#contact">Become a Distributor</a><a href="#contact">Private Label</a><a href="#certifications">Quality &amp; Certifications</a><a href="#contact">Downloads</a></div>
+  </div>
+  <div class="footer-bottom"><span>© <span id="currentYear"></span> UNIKA. All rights reserved.</span><span><a href="#footer">Privacy Policy</a> &nbsp;|&nbsp; <a href="#footer">Terms &amp; Conditions</a></span><span>Homepage prototype</span></div>
+ </div>
+</footer>
+
+<div class="newsletter-popup" id="newsletterPopup" hidden>
+ <section class="newsletter-dialog" role="dialog" aria-modal="true" aria-labelledby="newsletterPopupTitle" aria-describedby="newsletterPopupDescription">
+  <button class="newsletter-close" id="newsletterPopupClose" type="button" aria-label="Close newsletter popup">&times;</button>
+  <h2 id="newsletterPopupTitle">Stay Updated with UNIKA</h2>
+  <p id="newsletterPopupDescription">Subscribe for news, offers, and product updates.</p>
+  <!-- Backend integration: POST JSON { email } to /newsletter/subscribe and return JSON { "success": true } after a successful subscription. Add the Laravel CSRF token when this endpoint is wired. -->
+  <form class="newsletter-popup-form" id="newsletterPopupForm" action="/newsletter/subscribe" method="post">
+   <label for="newsletterPopupEmail" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Email address</label>
+   <input id="newsletterPopupEmail" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
+   <button type="submit">Subscribe</button>
+  </form>
+  <p class="newsletter-popup-status" id="newsletterPopupStatus" role="status" aria-live="polite"></p>
+ </section>
+</div>
+
+<div class="whatsapp-widget">
+ <div class="whatsapp-prompt" id="whatsappPrompt" aria-hidden="true"><strong>Start a conversation</strong><p>Have a question? Chat with the UNIKA team on WhatsApp.</p><a class="whatsapp-start" id="whatsappStart" href="https://wa.me/923001234567?text=Hello%20UNIKA%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer">Start Conversation</a></div>
+ <button class="whatsapp-toggle" id="whatsappToggle" type="button" aria-expanded="false" aria-controls="whatsappPrompt">Chat</button>
+</div>
+
+<script>
+(function(){
+ "use strict";
+ var year=document.getElementById("currentYear");
+ if(year) year.textContent=new Date().getFullYear();
+
+ var newsletterPopup=document.getElementById("newsletterPopup");
+ var newsletterDialog=newsletterPopup.querySelector(".newsletter-dialog");
+ var newsletterClose=document.getElementById("newsletterPopupClose");
+ var newsletterForm=document.getElementById("newsletterPopupForm");
+ var newsletterStatus=document.getElementById("newsletterPopupStatus");
+ var newsletterSubmit=newsletterForm.querySelector('button[type="submit"]');
+ var newsletterStorageKey="unikaNewsletterPopupDismissed";
+ var newsletterSessionKey="unikaNewsletterPopupShown";
+ var previousFocus=null;
+
+ function storageGet(storage,key){
+  try{return storage.getItem(key)}
+  catch(error){console.error("Newsletter popup storage is unavailable.",error);return null}
+ }
+ function storageSet(storage,key,value){
+  try{storage.setItem(key,value);return true}
+  catch(error){console.error("Could not save newsletter popup preference.",error);return false}
+ }
+ function closeNewsletterPopup(saveDismissal){
+  newsletterPopup.hidden=true;
+  document.body.style.overflow="";
+  if(saveDismissal){
+   storageSet(window.localStorage,newsletterStorageKey,"true");
+   storageSet(window.sessionStorage,newsletterSessionKey,"true");
+  }
+  if(previousFocus&&typeof previousFocus.focus==="function") previousFocus.focus();
+ }
+ function openNewsletterPopup(){
+  if(storageGet(window.localStorage,newsletterStorageKey)==="true"||
+     storageGet(window.sessionStorage,newsletterSessionKey)==="true") return;
+  storageSet(window.sessionStorage,newsletterSessionKey,"true");
+  previousFocus=document.activeElement;
+  newsletterPopup.hidden=false;
+  document.body.style.overflow="hidden";
+  document.getElementById("newsletterPopupEmail").focus();
+ }
+ if(storageGet(window.localStorage,newsletterStorageKey)!=="true"&&
+    storageGet(window.sessionStorage,newsletterSessionKey)!=="true"){
+  window.setTimeout(openNewsletterPopup,2000);
+ }
+ newsletterClose.addEventListener("click",function(){closeNewsletterPopup(true)});
+ newsletterPopup.addEventListener("click",function(event){
+  if(event.target===newsletterPopup) closeNewsletterPopup(true);
+ });
+ newsletterForm.addEventListener("submit",async function(event){
+  event.preventDefault();
+  if(!newsletterForm.reportValidity()) return;
+  newsletterStatus.textContent="Submitting your subscription…";
+  newsletterSubmit.disabled=true;
+  var csrfMeta=document.querySelector('meta[name="csrf-token"]');
+  var headers={"Accept":"application/json","Content-Type":"application/json"};
+  if(csrfMeta) headers["X-CSRF-TOKEN"]=csrfMeta.content;
+  try{
+   var response=await fetch(newsletterForm.action,{
+    method:"POST",
+    headers:headers,
+    body:JSON.stringify({email:newsletterForm.elements.email.value})
+   });
+   if(!response.ok) throw new Error("Newsletter endpoint returned HTTP "+response.status);
+   var result=await response.json();
+   if(!result||result.success!==true) throw new Error("Newsletter endpoint did not confirm the subscription.");
+   newsletterStatus.textContent=result.message||"Thanks for subscribing. Your email has been added.";
+   storageSet(window.localStorage,newsletterStorageKey,"true");
+   newsletterSubmit.disabled=true;
+  }catch(error){
+   console.error("Newsletter subscription failed.",error);
+   newsletterStatus.textContent="We couldn't complete your subscription. Please try again later.";
+   newsletterSubmit.disabled=false;
+  }
+ });
+ document.addEventListener("keydown",function(event){
+  if(newsletterPopup.hidden) return;
+  if(event.key==="Escape"){
+   event.preventDefault();
+   closeNewsletterPopup(true);
+   return;
+  }
+  if(event.key==="Tab"){
+   var focusable=newsletterDialog.querySelectorAll('button:not([disabled]),input:not([disabled])');
+   var first=focusable[0];
+   var last=focusable[focusable.length-1];
+   if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+   else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+  }
+ });
+
+ document.querySelectorAll(".brand-card img").forEach(function(img){
+  img.addEventListener("error",function(){
+   img.hidden=true;
+   var fallback=img.parentElement.querySelector(".brand-fallback");
+   if(fallback) fallback.hidden=false;
+  },{once:true});
+ });
+
+ var cartMessage=document.getElementById("cartMessage");
+ document.querySelectorAll(".add-to-cart").forEach(function(button){
+  button.addEventListener("click",function(){
+   if(cartMessage) cartMessage.textContent=button.getAttribute("data-product")+" selected. Connect this button to the real cart/checkout before launch.";
+  });
+ });
+
+ var prompt=document.getElementById("whatsappPrompt");
+ var toggle=document.getElementById("whatsappToggle");
+ toggle.addEventListener("click",function(){
+  var open=prompt.classList.toggle("is-open");
+  prompt.setAttribute("aria-hidden",String(!open));
+  toggle.setAttribute("aria-expanded",String(open));
+ });
+ document.addEventListener("click",function(event){
+  if(!event.target.closest(".whatsapp-widget")){
+   prompt.classList.remove("is-open");
+   prompt.setAttribute("aria-hidden","true");
+   toggle.setAttribute("aria-expanded","false");
+  }
+ });
+
+ document.addEventListener("keydown",function(event){
+  if(event.key==="Escape"){
+   prompt.classList.remove("is-open");
+   prompt.setAttribute("aria-hidden","true");
+   toggle.setAttribute("aria-expanded","false");
+  }
+ });
+ document.querySelectorAll('a[href^="#"]').forEach(function(link){
+  link.addEventListener("click",function(event){
+   var href=link.getAttribute("href");
+   if(!href||href==="#")return;
+   var target=document.getElementById(href.slice(1));
+   if(target){
+    event.preventDefault();
+    target.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+   }
+  });
+ });
+})();
+</script>
+</body>
+</html>
